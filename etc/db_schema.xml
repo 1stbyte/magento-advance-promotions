@@ -1,0 +1,20 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="the1stbyte_advance_promotions_rules" resource="default" engine="innodb"
+           comment="The 1stbyte Advance Promotions Rules">
+        <column xsi:type="int" name="entity_id" padding="11" unsigned="false" nullable="false" identity="true"
+                comment="Entity ID"/>
+        <column xsi:type="int" name="rule_id" unsigned="true" nullable="false" comment="Rule ID"/>
+        <column xsi:type="text" name="tfb" comment="Additional Data"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="THE1STBYTE_ADVANCE_PROMOTIONS_RULES_RULE_ID_SALESRULE_RULE_ID"
+                    table="the1stbyte_advance_promotions_rules" column="rule_id" referenceTable="salesrule"
+                    referenceColumn="rule_id" onDelete="CASCADE"/>
+    </table>
+</schema>
